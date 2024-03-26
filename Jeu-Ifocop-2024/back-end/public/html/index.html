@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title>ball-trap</title>
+</head>
+<body>
+    <div class="overlay">
+        <div class="modal">
+            <h2>Bienvenue sur ball-trap</h2>
+            <p>Le premier à atteindre 100 poins a gagné !</p>
+            <form method="post" id="form">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" name="pseudo" id="pseudo">
+                <input type="submit" value="Jouer">
+            </form>
+            <p id="errorMsg"></p>
+        </div>
+    </div>
+    <script src="./socket.io/socket.io.min.js"></script>
+    <script src="./socket/scripts/socket.io.js"></script>
+</body>
+</html>
