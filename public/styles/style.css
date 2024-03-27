@@ -10,6 +10,8 @@ body {
     border: 5px solid black;
     background-color: bisque;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
 }
 
 li {
