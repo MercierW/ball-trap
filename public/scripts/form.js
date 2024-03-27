@@ -1,4 +1,4 @@
-import { socketEvents } from "http://localhost:6500/socket-events/scripts/socketEvents.js";
+import { socketEvents } from "https://ball-trap.onrender.com/socket-events/scripts/socketEvents.js";
 window.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("form");
   const errP = window.document.getElementById("errorMsg");
