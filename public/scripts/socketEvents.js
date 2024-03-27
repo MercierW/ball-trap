@@ -1,7 +1,7 @@
-import { deleteCursor } from "http://localhost:6500/delete-cursor/scripts/socketDeleteCursor.js";
-import { creationBall } from "http://localhost:6500/creation-ball/scripts/socketCreationBall.js";
-import { createOrUpdateCursor } from "http://localhost:6500/create-or-update-cursor/scripts/socketCreateOrUpdateCursor.js";
-import { createOrUpdateScoreBoard } from "http://localhost:6500/create-or-update-scoreboard/scripts/socketCreateOrUpdateScoreBoard.js";
+import { deleteCursor } from "https://ball-trap.onrender.com/delete-cursor/scripts/socketDeleteCursor.js";
+import { creationBall } from "https://ball-trap.onrender.com/creation-ball/scripts/socketCreationBall.js";
+import { createOrUpdateCursor } from "https://ball-trap.onrender.com/create-or-update-cursor/scripts/socketCreateOrUpdateCursor.js";
+import { createOrUpdateScoreBoard } from "https://ball-trap.onrender.com/create-or-update-scoreboard/scripts/socketCreateOrUpdateScoreBoard.js";
 
 
 function socketEvents() {
