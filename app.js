@@ -11,8 +11,7 @@ import playerNameForCursorName from "./src/js/socketPlayerNameForCursorName.js";
 import lookingForIfPlayerExist from "./src/middleware/lookingForIfPlayerExist.js";
 
 const app = express();
-const port = 6500;
-const host = "localhost";
+const port = process.env.PORT || 6500;
 
 app.use(express.json());
 app.use("/favicon", express.static("./public"));
@@ -57,7 +56,7 @@ app
     }
   });
 
-const httpServer = app.listen(port, host, () => {
+const httpServer = app.listen(port, () => {
   console.log(`Serveur sur écoute au port :${port}`);
 });
 
