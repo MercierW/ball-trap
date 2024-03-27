@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import mouseCoor from "./src/js/socketMouseCoor.js";
 import disconnect from "./src/js/socketDisconnect.js";
 import updateScore from "./src/js/socketUpdateScore.js";
-import playerNameForScoreBoard from "./src/js/socketplayerNameForScoreBoard.js";
+import playerNameForScoreBoard from "./src/js/socketPlayerNameForScoreBoard.js";
 import playerNameForCursorName from "./src/js/socketPlayerNameForCursorName.js";
 import lookingForIfPlayerExist from "./src/middleware/lookingForIfPlayerExist.js";
 
