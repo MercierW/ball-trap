@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", () => {
         pseudo: pseudoInput.value,
         score: 0,
       };
-      fetch("http://localhost:6500/register", {
+      fetch("https://ball-trap.onrender.com/form/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
