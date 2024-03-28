@@ -1,5 +1,5 @@
 import MongoClient from "../db/client.js";
-async function disconnect(cursorForConnexion, allCursors, scoreBoard, ioServer) {
+async function disconnect(cursorForConnexion, allCursors, scoreBoard, scoreLimit, ioServer) {
   try {
     await MongoClient.connect();
     const db = MongoClient.db(String(process.env.DBNAME));
@@ -18,6 +18,7 @@ async function disconnect(cursorForConnexion, allCursors, scoreBoard, ioServer) 
     scoreBoard = scoreBoardFiltred;
     delete allCursors[cursorForConnexion.id];
     ioServer.emit("cursorDestroyed", cursorForConnexion);
+    ioServer.emit("createAndUpdateScoreBoard", scoreBoard, scoreLimit);
   }
 }
 
