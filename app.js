@@ -115,6 +115,6 @@ ioServer.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    disconnect(cursorForConnexion, allCursors, scoreBoard, ioServer);
+    disconnect(cursorForConnexion, allCursors, scoreBoard, scoreLimit, ioServer);
   });
 });
