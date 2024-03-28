@@ -68,19 +68,19 @@ const ioServer = new Server(httpServer);
 const scoreLimit = 10;
 const allCursors = {};
 let scoreBoard = [];
+let ball = {
+  id: "ball",
+  top: "300px",
+  left: "300px",
+  width: "50px",
+  height: "50px",
+  position: "absolute",
+  radius: "50px",
+  backgroundColor: "brown",
+};
 
 ioServer.on("connection", (socket) => {
   console.log(`Connecté au client ${socket.id}`);
-  let ball = {
-    id: "ball",
-    top: Math.floor(Math.random() * 600) + "px",
-    left: Math.floor(Math.random() * 1200) + "px",
-    width: "50px",
-    height: "50px",
-    position: "absolute",
-    radius: "50px",
-    backgroundColor: "brown",
-  };
   const cursorForConnexion = {
     id: uuidv4(),
     pId: uuidv4(),
@@ -95,7 +95,6 @@ ioServer.on("connection", (socket) => {
     backgroundColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
     pseudo: "",
   };
-
   ioServer.emit("ballCreation", ball);
 
   socket.on("playerNameForScoreBoard", (playerData) => {
@@ -107,12 +106,7 @@ ioServer.on("connection", (socket) => {
   });
 
   socket.on("playerNameForCursorName", (playerData) => {
-    playerNameForCursorName(
-      playerData,
-      cursorForConnexion,
-      allCursors,
-      ball,
-      ioServer
+    playerNameForCursorName(playerData, cursorForConnexion, allCursors, ioServer
     );
   });
 
