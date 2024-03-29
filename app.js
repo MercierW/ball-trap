@@ -78,9 +78,9 @@ let ball = {
   radius: "50px",
   backgroundColor: "brown",
 };
-
 ioServer.on("connection", (socket) => {
   console.log(`Connecté au client ${socket.id}`);
+  console.log(scoreBoard)
   const cursorForConnexion = {
     id: uuidv4(),
     pId: uuidv4(),
@@ -95,10 +95,11 @@ ioServer.on("connection", (socket) => {
     backgroundColor: "#" + Math.floor(Math.random() * 16777215).toString(16),
     pseudo: "",
   };
+  
   ioServer.emit("ballCreation", ball);
 
-  socket.on("playerNameForScoreBoard", (playerData) => {
-    playerNameForScoreBoard(playerData, scoreBoard, ioServer);
+  socket.on("playerNameForScoreBoard", () => {
+    playerNameForScoreBoard(scoreBoard, scoreLimit, ioServer);
   });
 
   socket.on("updateScore", (scoreData) => {
@@ -106,8 +107,7 @@ ioServer.on("connection", (socket) => {
   });
 
   socket.on("playerNameForCursorName", (playerData) => {
-    playerNameForCursorName(playerData, cursorForConnexion, allCursors, ioServer
-    );
+    playerNameForCursorName(playerData, cursorForConnexion, allCursors, ioServer);
   });
 
   socket.on("mouseCoor", (cursorData) => {
@@ -115,6 +115,6 @@ ioServer.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    disconnect(cursorForConnexion, allCursors, scoreBoard, scoreLimit, ioServer);
+    disconnect(cursorForConnexion, allCursors, scoreBoard, ioServer);
   });
 });
