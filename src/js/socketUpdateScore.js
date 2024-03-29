@@ -2,7 +2,6 @@ import MongoClient from "../db/client.js";
 async function updateScore(scoreData, scoreBoard, ball, scoreLimit, ioServer) {
   let findPlayer = [];
   let scoreUpdated;
-  let playerScore;
   try {
     await MongoClient.connect();
     const db = MongoClient.db(String(process.env.DBNAME));
@@ -20,14 +19,10 @@ async function updateScore(scoreData, scoreBoard, ball, scoreLimit, ioServer) {
       { pseudo: scoreData.pseudo },
       { $set: { score: scoreUpdated } }
     );
-
-    for (const player of scoreBoard) {
-      if (player.pseudo === scoreData.pseudo) {
-        player.score = scoreUpdated;
-        playerScore = scoreUpdated
-        ioServer.emit("createAndUpdateScoreBoard", scoreBoard, scoreLimit);
-      }
-    }
+    scoreBoard = await playersInfoColl
+    .find({}, { projection: { _id: 0 } })
+    .toArray();
+    ioServer.emit("createAndUpdateScoreBoard", scoreBoard, scoreLimit);
   } catch (error) {
     console.error(error);
   } finally {
@@ -35,10 +30,12 @@ async function updateScore(scoreData, scoreBoard, ball, scoreLimit, ioServer) {
   }
   ball.top = Math.floor(Math.random() * 600) + "px";
   ball.left = Math.floor(Math.random() * 1200) + "px";
-  if (playerScore < scoreLimit) {
-    setTimeout(() => {
-      ioServer.emit("ballCreation", ball);
-    }, 1000);
+  for(const player of scoreBoard) {
+    if (player.score < scoreLimit) {
+      setTimeout(() => {
+        ioServer.emit("ballCreation", ball);
+      }, 1000);
+    }
   }
 }
 
