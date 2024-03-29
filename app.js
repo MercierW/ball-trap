@@ -80,7 +80,6 @@ let ball = {
 };
 ioServer.on("connection", (socket) => {
   console.log(`Connecté au client ${socket.id}`);
-  console.log(scoreBoard)
   const cursorForConnexion = {
     id: uuidv4(),
     pId: uuidv4(),
