@@ -12,7 +12,6 @@ import lookingForIfPlayerExist from "./src/middleware/lookingForIfPlayerExist.js
 
 const app = express();
 const port = process.env.PORT || 12211;
-const host = "localhost";
 
 app.use(express.json());
 app.use("/favicon", express.static("./public"));
