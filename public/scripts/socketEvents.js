@@ -40,12 +40,13 @@ function socketEvents() {
     });
   });
 
-  window.addEventListener("click", function () {
+  window.addEventListener("click", function (e) {
     if(e.target.id === 'ball') {
-     socket.emit("updateScore", {
-       pseudo: localStorage.getItem("playerName"),
-       score: 5,
-     });
+      socket.emit("updateScore", {
+        pseudo: localStorage.getItem("playerName"),
+        score: 5,
+      });
+    }
   });
 }
 
