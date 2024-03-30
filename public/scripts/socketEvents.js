@@ -41,10 +41,11 @@ function socketEvents() {
   });
 
   window.addEventListener("click", function () {
-    socket.emit("updateScore", {
-      pseudo: localStorage.getItem("playerName"),
-      score: 5,
-    });
+    if(e.target === 'ball') {
+     socket.emit("updateScore", {
+       pseudo: localStorage.getItem("playerName"),
+       score: 5,
+     });
   });
 }
 
