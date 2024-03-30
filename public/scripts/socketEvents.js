@@ -41,7 +41,7 @@ function socketEvents() {
   });
 
   window.addEventListener("click", function () {
-    if(e.target === 'ball') {
+    if(e.target.id === 'ball') {
      socket.emit("updateScore", {
        pseudo: localStorage.getItem("playerName"),
        score: 5,
