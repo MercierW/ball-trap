@@ -11,7 +11,8 @@ import playerNameForCursorName from "./src/js/socketPlayerNameForCursorName.js";
 import lookingForIfPlayerExist from "./src/middleware/lookingForIfPlayerExist.js";
 
 const app = express();
-const port = process.env.PORT || 6500;
+const port = 6500;
+const host = "localhost";
 
 app.use(express.json());
 app.use("/favicon", express.static("./public"));
@@ -19,6 +20,7 @@ app.use("/style", express.static("./public"));
 app.use("/form", express.static("./public"));
 app.use("/socket-events", express.static("./public"));
 app.use("/delete-cursor", express.static("./public"));
+app.use("/remove-ball", express.static("./public"));
 app.use("/creation-ball", express.static("./public"));
 app.use("/create-or-update-cursor", express.static("./public"));
 app.use("/create-or-update-scoreboard", express.static("./public"));
@@ -56,7 +58,7 @@ app
     }
   });
 
-const httpServer = app.listen(port, () => {
+const httpServer = app.listen(port, host, () => {
   console.log(`Serveur sur écoute au port :${port}`);
 });
 

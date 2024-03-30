@@ -2,7 +2,7 @@ import { deleteCursor } from "https://ball-trap.onrender.com/delete-cursor/scrip
 import { creationBall } from "https://ball-trap.onrender.com/creation-ball/scripts/socketCreationBall.js";
 import { createOrUpdateCursor } from "https://ball-trap.onrender.com/create-or-update-cursor/scripts/socketCreateOrUpdateCursor.js";
 import { createOrUpdateScoreBoard } from "https://ball-trap.onrender.com/create-or-update-scoreboard/scripts/socketCreateOrUpdateScoreBoard.js";
-
+import { removeBall } from "https://ball-trap.onrender.com/remove-ball/scripts/socketRemoveBall.js";
 
 function socketEvents() {
   const socket = io();
@@ -12,12 +12,18 @@ function socketEvents() {
   socket.on("ballCreation", (ballData) => {
     creationBall(ballData);
   });
+
+  socket.on("removeBall", (ballData) => {
+    removeBall(ballData)
+  })
+  
   socket.on("createOrUpdateCursor", (cursorDataFromServ) => {
     createOrUpdateCursor(cursorDataFromServ);
   });
   socket.on("createAndUpdateScoreBoard", (scoreBoardData, scoreLimit) => {
     createOrUpdateScoreBoard(scoreBoardData, scoreLimit);
   });
+
   setTimeout(() => {
     socket.emit("playerNameForCursorName", {
       pseudo: localStorage.getItem("playerName"),
@@ -39,7 +45,6 @@ function socketEvents() {
       pseudo: localStorage.getItem("playerName"),
       score: 5,
     });
-  }
   });
 }
 
