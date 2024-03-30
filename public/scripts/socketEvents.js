@@ -34,15 +34,12 @@ function socketEvents() {
     });
   });
 
-  window.addEventListener("click", function (e) {
-    const targetId = e.target.id;
-    if (targetId === "ball") {
-      e.target.remove();
-      socket.emit("updateScore", {
-        pseudo: localStorage.getItem("playerName"),
-        score: 5,
-      });
-    }
+  window.addEventListener("click", function () {
+    socket.emit("updateScore", {
+      pseudo: localStorage.getItem("playerName"),
+      score: 5,
+    });
+  }
   });
 }
 
