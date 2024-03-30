@@ -31,7 +31,7 @@ async function updateScore(scoreData, scoreBoard, ball, scoreLimit, ioServer) {
   ball.top = Math.floor(Math.random() * 600) + "px";
   ball.left = Math.floor(Math.random() * 1200) + "px";
   for(const player of scoreBoard) {
-    if (player.score < scoreLimit) {
+    if (player.score <= scoreLimit) {
       ioServer.emit("removeBall", ball);
       ioServer.emit("ballCreation", ball);
     } else {
