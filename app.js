@@ -96,12 +96,12 @@ ioServer.on("connection", (socket) => {
     pseudo: "",
   };
   
-    if(scoreBoard.length === 0) {
+  if (scoreBoard.length === 0) {
     ioServer.emit("ballCreation", ball);
   } else {
-    for(const playerInfo of scoreBoard) {
-      if(playerInfo.score >= scoreLimit) {
-        console.log('finito')
+    for (const playerInfo of scoreBoard) {
+      if (playerInfo.score >= scoreLimit) {
+        ioServer.emit("removeBall", ball);
       } else {
         ioServer.emit("ballCreation", ball);
       }
