@@ -32,9 +32,7 @@ async function updateScore(scoreData, scoreBoard, ball, scoreLimit, ioServer) {
   ball.left = Math.floor(Math.random() * 1200) + "px";
   for(const player of scoreBoard) {
     if (player.score < scoreLimit) {
-      setTimeout(() => {
-        ioServer.emit("ballCreation", ball);
-      }, 1000);
+      ioServer.emit("ballCreation", ball);
     }
   }
 }
