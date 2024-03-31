@@ -66,7 +66,7 @@ const httpServer = app.listen(port, () => {
  */
 
 const ioServer = new Server(httpServer);
-const scoreLimit = 10;
+const scoreLimit = 100;
 const allCursors = {};
 let scoreBoard = [];
 let ball = {
